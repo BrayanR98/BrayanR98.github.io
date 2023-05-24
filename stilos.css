@@ -13,6 +13,9 @@
 #nombrenav{
     font-family:  sans-serif;
 }
+.hover:hover{
+    cursor: pointer;
+}
 .redes{
 
     margin: 5px;

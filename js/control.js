@@ -8,14 +8,24 @@
   var dia = Xmas95.getDay()
   var cabecera = document.getElementById("main")
   let imgcabeza = document.getElementById("imgcabeza")
+  let cabeceramcorreo = document.getElementById("cabeceraEmail")//cabecera modal correo
+  let modalemailc = document.getElementById("modalemailc") // body modal correo
+  let btncorreo = document.getElementById("btncorreo") //boton envio mail
+  let fmcorreo = document.getElementById("fmcorreo")//footer modal correo
   console.log("oelo")
   console.log(3 % 2)
   if(dia % 2 == 0){
     let imgcabeza = document.getElementById("imgcabeza")
+    
     imgcabeza.classList.add("m-5")
     imgcabeza.borderRadius= "100%"
     imgcabeza.style.width= "30%"
     imgcabeza.style.height= "70%"
+    //modal correo
+    cabeceramcorreo.style.backgroundColor = '#909497';
+    modalemailc.style.background='#34495E ';
+    fmcorreo.style.backgroundColor = '#909497';
+    btncorreo.classList.add('btn-primary')
     
     cabecera.style.backgroundImage=  `url(${"jgif/estrellas.gif"})`
   }else{
@@ -32,15 +42,12 @@
     let body = document.getElementById("body")
     body.style.background='#BFC9CA';
     //estilo modal correo
-    //cabecera
-    let cabeceramcorreo = document.getElementById("cabeceraEmail")
+    //cabecera   
     cabeceramcorreo.classList.add("morado");
-
     //cuerpo
-    let modalemailc = document.getElementById("modalemailc")
     modalemailc.style.background='#BFC9CA';
-    //footer
-    let fmcorreo = document.getElementById("fmcorreo")
+    btncorreo.classList.add('morado')
+    //footer   
     fmcorreo.classList.add("morado");
     // estilos barra navegacion
     let barra = document.getElementById("barra")
@@ -127,6 +134,7 @@ function pintarcards() {
         let foto = document.createElement("img")
         foto.classList.add("card-img-top")
         foto.src= producto.imagen
+        foto.classList.add("hover")
        
         let Id = document.createElement("p")
         Id.classList.add("idp")
