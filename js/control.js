@@ -13,8 +13,8 @@
 
  function obtenerStilo() {    
 var Xmas95 = new Date(Date.now());
-//   var dia = Xmas95.getDay()
- var dia = 4
+   var dia = Xmas95.getDay()
+ 
   
 
   if(dia % 2 == 0){
@@ -24,7 +24,7 @@ var Xmas95 = new Date(Date.now());
     cambioStilo()
     
   }
-
+  pintarcards()
  }
 
  function Stilo1(){
@@ -43,25 +43,7 @@ var Xmas95 = new Date(Date.now());
     cabecera.style.backgroundImage=  `url(${"jgif/estrellas.gif"})`
 
     
- }
-/* var Xmas95 = new Date(Date.now());
-  var dia = Xmas95.getDay()
-  var cabecera = document.getElementById("main")
-  let imgcabeza = document.getElementById("imgcabeza")
-  let cabeceramcorreo = document.getElementById("cabeceraEmail")//cabecera modal correo
-  let modalemailc = document.getElementById("modalemailc") // body modal correo
-  let btncorreo = document.getElementById("btncorreo") //boton envio mail
-  let fmcorreo = document.getElementById("fmcorreo")//footer modal correo
-  console.log("oelo")
-  console.log(3 % 2)
-  if(dia % 2 == 0){
-    
-  }else{
-    cambioStilo()
-  }*/
-    
-       
-    
+ }  
   function cambioStilo() {
 //   var Xmas95 = new Date(Date.now());
 //   var numerodia = Xmas95.getDay()
@@ -180,7 +162,7 @@ function pintarcards() {
 
 }
 document.addEventListener('DOMcontentload',
-    pintarcards(),
+    
     obtenerStilo()
    
  )
@@ -223,24 +205,27 @@ cards.addEventListener("click",async (evento)=>{
         let tituloproyecto = document.getElementById("tituloproyecto");
         let fotop = document.getElementById("fotop");
         let descpro = document.getElementById("descppro");
-        let proyecto={}
+        let img = fotop.querySelector('.tfotop')
+        img.src=""
+        let proyecto = {}
+        proyecto.fotos = []
         
         
                 proyecto =proyectos[d]
-                
-                console.log( proyecto)
-               
                document.getElementById("tecnologia").innerHTML=proyecto.tec
                 tituloproyecto.textContent= proyecto.nombre
-                let img = fotop.querySelector('.tfotop')
+                console.log(proyecto)
                 let cont=0
                 
-                img.src =await proyecto.fotos[0]
-
+                
+                img.src = await proyecto.fotos[0]
+                carrusel()
                 //funcion para slider imagenes de proyectos
                 function carrusel (){
                     fotop.addEventListener('click',(e)=>{
                         
+                        
+                        img.src=""
                         let atras = fotop.querySelector('.atras')
                         let adelante = fotop.querySelector('.adelante')
                         
@@ -266,8 +251,9 @@ cards.addEventListener("click",async (evento)=>{
                         }
                         
                     })
+                    
                 }
-                carrusel()
+                
                 
                 descpro.textContent = proyecto.descripcion
     
@@ -275,10 +261,12 @@ cards.addEventListener("click",async (evento)=>{
         //cargar informaciond el producto dentro del modal
        // producto=ampliarInformacion(evento)
         modalinfo.show()
+        
+        
+        
     }
     
 })
-
 //ANIMACIONES DE SCROLL
 
  document.addEventListener('scroll',function (){
