@@ -1,22 +1,35 @@
  import {prueba} from './stilodiassemana.js'
- document.addEventListener('DOMcontentload',
-    pintarcards(),
-   // cambioStilo()
-   
- )
- var Xmas95 = new Date(Date.now());
-  var dia = Xmas95.getDay()
-  var cabecera = document.getElementById("main")
-  let imgcabeza = document.getElementById("imgcabeza")
-  let cabeceramcorreo = document.getElementById("cabeceraEmail")//cabecera modal correo
-  let modalemailc = document.getElementById("modalemailc") // body modal correo
-  let btncorreo = document.getElementById("btncorreo") //boton envio mail
-  let fmcorreo = document.getElementById("fmcorreo")//footer modal correo
-  console.log("oelo")
-  console.log(3 % 2)
+ 
+ 
+ 
+ 
+
+ var cabecera = document.getElementById("main")
+ let imgcabeza = document.getElementById("imgcabeza")
+ let cabeceramcorreo = document.getElementById("cabeceraEmail")//cabecera modal correo
+ let modalemailc = document.getElementById("modalemailc") // body modal correo
+ let btncorreo = document.getElementById("btncorreo") //boton envio mail
+ let fmcorreo = document.getElementById("fmcorreo")//footer modal correo
+
+ function obtenerStilo() {    
+var Xmas95 = new Date(Date.now());
+//   var dia = Xmas95.getDay()
+ var dia = 4
+  
+
   if(dia % 2 == 0){
-    let imgcabeza = document.getElementById("imgcabeza")
+    Stilo1()
     
+  }else{
+    cambioStilo()
+    
+  }
+
+ }
+
+ function Stilo1(){
+    
+    imgcabeza.src= "img/netsinfondo.png"
     imgcabeza.classList.add("m-5")
     imgcabeza.borderRadius= "100%"
     imgcabeza.style.width= "30%"
@@ -28,9 +41,24 @@
     btncorreo.classList.add('btn-primary')
     
     cabecera.style.backgroundImage=  `url(${"jgif/estrellas.gif"})`
+
+    
+ }
+/* var Xmas95 = new Date(Date.now());
+  var dia = Xmas95.getDay()
+  var cabecera = document.getElementById("main")
+  let imgcabeza = document.getElementById("imgcabeza")
+  let cabeceramcorreo = document.getElementById("cabeceraEmail")//cabecera modal correo
+  let modalemailc = document.getElementById("modalemailc") // body modal correo
+  let btncorreo = document.getElementById("btncorreo") //boton envio mail
+  let fmcorreo = document.getElementById("fmcorreo")//footer modal correo
+  console.log("oelo")
+  console.log(3 % 2)
+  if(dia % 2 == 0){
+    
   }else{
     cambioStilo()
-  }
+  }*/
     
        
     
@@ -151,6 +179,11 @@ function pintarcards() {
 
 
 }
+document.addEventListener('DOMcontentload',
+    pintarcards(),
+    obtenerStilo()
+   
+ )
 //proyectos
 let proyectos =[{
     id:0,
@@ -181,7 +214,7 @@ let proyectos =[{
 
 ]
 //evento modal para ver proyectos segun lenguaje
-cards.addEventListener("click",(evento)=>{
+cards.addEventListener("click",async (evento)=>{
         if(evento.target.classList.contains("card-img-top")){
 
        //console.log(evento.target.firstElementChild.textContent)
@@ -193,7 +226,7 @@ cards.addEventListener("click",(evento)=>{
         let proyecto={}
         
         
-                proyecto = proyectos[d]
+                proyecto =proyectos[d]
                 
                 console.log( proyecto)
                
@@ -202,7 +235,7 @@ cards.addEventListener("click",(evento)=>{
                 let img = fotop.querySelector('.tfotop')
                 let cont=0
                 
-                img.src = proyecto.fotos[0]
+                img.src =await proyecto.fotos[0]
 
                 //funcion para slider imagenes de proyectos
                 function carrusel (){
@@ -216,7 +249,7 @@ cards.addEventListener("click",(evento)=>{
                         if(atras == tgt){
                             
                             if(cont>0){
-                                img.src = proyecto.fotos[cont-1]
+                                img.src =   proyecto.fotos[cont-1]
                                 cont--
                             }else{
                                 img.src = proyecto.fotos[proyecto.fotos.length - 1]
@@ -237,12 +270,7 @@ cards.addEventListener("click",(evento)=>{
                 carrusel()
                 
                 descpro.textContent = proyecto.descripcion
-
-
-
-            
-           
-      
+    
         let modalinfo = new bootstrap.Modal(document.getElementById('staticBackdrop'))
         //cargar informaciond el producto dentro del modal
        // producto=ampliarInformacion(evento)
